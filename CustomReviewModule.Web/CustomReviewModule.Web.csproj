@@ -45,6 +45,12 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -91,8 +97,13 @@
       <HintPath>..\packages\VirtoCommerce.Platform.Core.2.13.9\lib\net461\VirtoCommerce.Platform.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="VirtoCommerce.Platform.Data, Version=2.13.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Users\NNP\Downloads\vc-module-pricing-master\vc-module-pricing-master\packages\VirtoCommerce.Platform.Data.2.13.9\lib\net461\VirtoCommerce.Platform.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Localizations\en.VirtoCommerce.Review.json" />
     <None Include="module.ignore" />
     <None Include="packages.config" />
     <None Include="Content\help\index.html" />
@@ -110,16 +121,29 @@
   <ItemGroup>
     <Content Include="module.manifest" />
     <Content Include="Content\css\CustomReviewModule.Web.css" />
-    <Content Include="Scripts\blades\helloWorld_blade1.js" />
-    <Content Include="Scripts\blades\helloWorld_blade1.tpl.html" />
-    <Content Include="Scripts\customReviewModule.js" />
-    <Content Include="Scripts\resources\CustomReviewModule.WebApi.js" />
+    <Content Include="Scripts\blades\review-detail.js" />
+    <Content Include="Scripts\blades\review-detail.tpl.html" />
+    <Content Include="Scripts\blades\review-main.tpl.html" />
+    <Content Include="Scripts\blades\reviewlist.js" />
+    <Content Include="Scripts\blades\reviewlist.tpl.html" />
+    <Content Include="Scripts\blades\reviewMain.js" />
+    <Content Include="Scripts\review.js" />
+    <Content Include="Scripts\resources\review.js" />
+    <Content Include="Scripts\widgets\reviewWidget.js" />
+    <Content Include="Scripts\widgets\reviewWidget.tpl.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Api\CustomReviewModuleController.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomReviewModule.Data\CustomReviewModule.Data.csproj">
+      <Project>{7bc0bb3d-8431-470c-b35c-fa4aa5832d90}</Project>
+      <Name>CustomReviewModule.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
