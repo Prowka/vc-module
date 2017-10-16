@@ -2,13 +2,14 @@
     .controller('customReviewModule.reviewDetailController', ['$scope', 'platformWebApp.bladeNavigationService', 'customReviewModule.reviewApi', 'platformWebApp.settings',
         function ($scope, bladeNavigationService, reviewApi, settings) {
             var blade = $scope.blade;
-            blade.updatePermission = 'pricing:update';
+            blade.updatePermission = 'update';
 
             blade.refresh = function (parentRefresh) {
                 if (blade.isNew) {
                     initializeBlade();
                 } else {
-                    reviewApi.get({ id: blade.currentEntityId }, function (data) {
+                    reviewApi.getReviewById({ id: blade.currentEntityId }, function (data) {
+                        debugger;
                         initializeBlade(data);
                         if (parentRefresh) {
                             blade.parentBlade.refresh();

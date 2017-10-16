@@ -1,4 +1,4 @@
-﻿<!--<div class="blade-static">
+﻿<div class="blade-static">
     <div class="form-group">
         <div class="form-input __search">
             <input placeholder="{{ 'platform.placeholders.search-keyword' | translate }}" ng-model="filter.keyword" ng-keyup="$event.which === 13 && filter.criteriaChanged()">
@@ -9,7 +9,7 @@
         <p class="form-count">{{ 'platform.list.count' | translate }}: <span class="count">{{pageSettings.totalItems | number:0}}</span></p>
     </div>
 </div>
-<div class="blade-static __bottom" ng-if="pageSettings.itemsPerPageCount < pageSettings.totalItems" ng-include="'pagerTemplate.html'"></div>-->
+<div class="blade-static __bottom" ng-if="pageSettings.itemsPerPageCount < pageSettings.totalItems" ng-include="'pagerTemplate.html'"></div>
 <div class="blade-content __large-wide">
     <div class="blade-inner">
         <div class="inner-block" ng-init="setGridOptions({
@@ -18,9 +18,11 @@
                     rowHeight: 60,
                     rowTemplate: 'list.row.html',
                     columnDefs: [
-                        { name: 'author', displayName: 'автор'},
-                         { name: 'text', displayName: 'тукст'},
-                         { name: 'rate', displayName: 'рейтинг'},
+                             { name: 'author', displayName: 'Автор'},
+                                {name: 'createdDate', displayName: 'Опубликован'},
+                             {name: 'approved', displayName: 'Опубликован'},
+                             { name: 'text', displayName: 'Текст отзыва'},
+                             { name: 'rate', displayName: 'Рейтинг'},
                     ]})">
             <div class="table-wrapper" ng-if="blade.currentEntities.length">
                 <div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-save-state ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-height></div>
@@ -30,7 +32,7 @@
     </div>
 </div>
 <script type="text/ng-template" id="list.row.html">
-    <div ng-click='grid.appScope.selectNode(row.entity)' ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'" class="ui-grid-cell" ng-class="{'ui-grid-row-header-cell': col.isRowHeader, '__selected': row.entity.productId===grid.appScope.selectedNodeId }" role="{{col.isRowHeader ? 'rowheader' : 'gridcell' }}" ui-grid-cell></div>
+    <div ng-click='grid.appScope.selectNode(row.entity)' ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'" class="ui-grid-cell" ng-class="{'ui-grid-row-header-cell': col.isRowHeader, '__selected': row.entity.Id===grid.appScope.selectedNodeId }" role="{{col.isRowHeader ? 'rowheader' : 'gridcell' }}" ui-grid-cell></div>
 </script>
 <script type="text/ng-template" id="icon.cell.html">
     <div class="ui-grid-cell-contents">

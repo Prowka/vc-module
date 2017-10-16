@@ -7,7 +7,7 @@
             blade.refresh = function (parentRefresh) {
                 blade.isLoading = true;
 
-                return reviewApi.getReviewsListForProduct({ id: blade.currentEntityId }, function (data) {
+                return reviewApi.getReviewsListForProduct({ productId: blade.currentEntityId }, function (data) {
                     blade.isLoading = false;
                     blade.currentEntities = data.result;
                     $scope.pageSettings.totalItems = data.totalCount;
@@ -22,7 +22,7 @@
 
             $scope.selectNode = function (node, isNew) {
                 $scope.selectedNodeId = node.id;
-
+                debugger;
                 var newBlade = {
                     id: 'listItemChild',
                     controller: 'customReviewModule.reviewDetailController',
@@ -61,12 +61,12 @@
             $scope.deleteList = function (list) {
                 var dialog = {
                     id: "confirmDeleteItem",
-                    title: "pricing.dialogs.pricelists-delete.title",
-                    message: "pricing.dialogs.pricelists-delete.message",
+                    title: "Удаление отзыва",
+                    message: "Вы действительно хотите удалить отзыв?",
                     callback: function (remove) {
                         if (remove) {
                             bladeNavigationService.closeChildrenBlades(blade, function () {
-                                pricelists.remove({ ids: _.pluck(list, 'id') },
+                                reviewApi.remove({ ids: _.pluck(list, 'id') },
                                     blade.refresh(true),
                                     function (error) { bladeNavigationService.setError('Error ' + error.status, blade); });
                             });

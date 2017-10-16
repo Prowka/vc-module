@@ -9,7 +9,7 @@
                 $scope.reviewCount = '...';
                 $scope.reviewText = '...';
 
-                reviewApi.getReviewsByProductId({ id: blade.currentEntityId }, function (data) {
+                reviewApi.getReviewsByProductId({ productId: blade.currentEntityId }, function (data) {
                     $scope.reviewCount = data.count;
                     $scope.reviewText = data.text;
                 });
