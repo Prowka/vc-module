@@ -20,19 +20,19 @@ namespace CustomReviewModule.Data.Migration
 
         protected override void Seed(ReviewRepository context)
         {
-            Review testReview = new Review
-            {
-                Author = "Николай Прохоров",
-                CreatedDate = DateTime.UtcNow,
-                ProductId = "198d4ad4d5be42aea8d9546885a3bd99",
-                Text = "Первый отзыв",
-                Rate = 5
-            };
+            //Review testReview = new Review
+            //{
+            //    Author = "Николай Прохоров",
+            //    CreatedDate = DateTime.UtcNow,
+            //    ProductId = "198d4ad4d5be42aea8d9546885a3bd99",
+            //    Text = "Первый отзыв",
+            //    Rate = 5
+            //};
 
-            if (!context.Reviews.Any())
-            {
-                context.Add<Review>(testReview);
-            }
+            //if (!context.Reviews.Any())
+            //{
+            //    context.Add<Review>(testReview);
+            //}
 
         }
     }

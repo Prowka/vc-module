@@ -29,18 +29,16 @@ namespace CustomReviewModule.Web
 
         public override void SetupDatabase()
         {
-            using (var context = new ReviewRepository(_connectionStringName, _container.Resolve<AuditableInterceptor>()))
-            {
-                var initializer = new SetupDatabaseInitializer<ReviewRepository, Configuration>();
-                initializer.InitializeDatabase(context);
-            }
+            //using (var context = new ReviewRepository(_connectionStringName, _container.Resolve<AuditableInterceptor>()))
+            //{
+            //    var initializer = new SetupDatabaseInitializer<ReviewRepository, Configuration>();
+            //    initializer.InitializeDatabase(context);
+            //}
         }
 
         public override void Initialize()
         {
-            base.Initialize();
-            _container.RegisterType<IReviewRepository>(new InjectionFactory(c => new ReviewRepository(_connectionStringName, new EntityPrimaryKeyGeneratorInterceptor(), _container.Resolve<AuditableInterceptor>()
-                , new ChangeLogInterceptor(_container.Resolve<Func<IPlatformRepository>>(), ChangeLogPolicy.Cumulative, new[] { nameof(Review) }, _container.Resolve<IUserNameResolver>()))));
+            //_container.RegisterType<IReviewRepository>(new InjectionFactory(c => new ReviewRepository(_connectionStringName, new EntityPrimaryKeyGeneratorInterceptor())));
         }
 
         public override void PostInitialize()
